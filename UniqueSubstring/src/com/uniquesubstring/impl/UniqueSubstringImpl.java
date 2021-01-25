@@ -26,9 +26,14 @@ public class UniqueSubstringImpl {
 		System.out.println("Input Array length: " + inputArray.length + " and input: " + new String(inputArray));
 		System.out.println("Input String length: " + inputString.length() + " and input: " + inputString);
 		System.out.println("Total Sum: " + totalSum);
-		outputString = determineUniqueSubstring(inputString, inputArray.length, totalSum, start, end);
-		System.out.println("------Match found: " + outputString);
-		System.out.println("------Recursion Count: " + recursionCount);
+		if(inputString.length() >= inputArray.length) {
+			outputString = determineUniqueSubstring(inputString, inputArray.length, totalSum, start, end);
+			System.out.println("------Match found: " + outputString);
+			System.out.println("------Recursion Count: " + recursionCount);
+		} else {
+			System.out.println("Invalid input criterias specified");
+		}
+		
 	}
 
 	private static String determineUniqueSubstring(String inputString, int inputArrayLength, 
@@ -46,10 +51,12 @@ public class UniqueSubstringImpl {
 			inputSubstring = inputString.substring(inputString.length()-inputArrayLength, inputString.length());
 		}
 		System.out.println("Input Substring length: " + inputSubstring.length() + " and value: " + inputSubstring);
+		//Linear complexity as time depends on n i.e. inputSubstring
 		for(iter=0; iter<inputSubstring.length(); iter++) {
 			sum = sum + (int)inputSubstring.charAt(iter);
 			if(iter != (inputSubstring.length()-1) && 
 					inputSubstring.charAt(iter) == inputSubstring.charAt(inputSubstring.length()-1)) {
+				//Find the matching element with last element so we can skip that in subsequent searches
 				matchCount=iter+1;
 				break;
 			}
@@ -63,6 +70,7 @@ public class UniqueSubstringImpl {
 				start++;
 				end++;
 			} else {
+				//Update start and end by the matchCount so we can skip the common elements
 				start = start + matchCount;
 				end = end + matchCount;
 			}
