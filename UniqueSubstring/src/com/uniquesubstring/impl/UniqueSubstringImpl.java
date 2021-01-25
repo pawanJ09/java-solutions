@@ -5,6 +5,13 @@ package com.uniquesubstring.impl;
 
 /**
  * @author pawanjaiswal
+ * This Java program will help find the smallest unique substring from an input string
+ * matching all characters from the input array
+ * 
+ * Example
+ * inputArray = x, y, z
+ * inputString = xyyzyzyxxy
+ * output = zyx
  *
  */
 public class UniqueSubstringImpl {
