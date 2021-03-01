@@ -1,2 +1,2 @@
 # daily-stuff
-Store my daily activities
+Solutions to common Java problems from leetcode/kackerrank
